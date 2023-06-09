@@ -16,6 +16,7 @@
         </constraints>
         <properties>
           <font name="Arial Black" size="20" style="1"/>
+          <icon value="icon.png"/>
           <text value="Inscription"/>
         </properties>
       </component>
@@ -104,8 +105,9 @@
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-15635845"/>
-          <text value=" Register"/>
+          <background color="-16719966"/>
+          <font name="Lucida Sans Typewriter"/>
+          <text value="Regist"/>
         </properties>
       </component>
       <component id="3bc50" class="javax.swing.JButton" binding="jbtUpdate">
@@ -114,6 +116,7 @@
         </constraints>
         <properties>
           <background color="-4789510"/>
+          <font name="Lucida Sans Typewriter"/>
           <text value="Update"/>
         </properties>
       </component>
@@ -122,7 +125,8 @@
           <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-5041390"/>
+          <background color="-1404820"/>
+          <font name="Lucida Sans Typewriter"/>
           <text value="Cancel"/>
         </properties>
       </component>

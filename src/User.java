@@ -12,6 +12,7 @@ public class User {
         this.pwd =pwd;
     }
 
+
     public int getId() {
         return id;
     }

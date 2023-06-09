@@ -20,6 +20,7 @@ public class MainForm extends JDialog{
    
     private JLabel jlVerify;
     private JButton jbtUpdate;
+    private User user;
 
     public MainForm(JFrame parent){
         super(parent);
@@ -32,9 +33,41 @@ public class MainForm extends JDialog{
         jbtAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String nom = tfNom.getText();
+                String prenom = tfPrenom.getText();
+                String email = tfEmail.getText();
+                String pwd = String.valueOf(pfPwd.getPassword());
+
                 register();
+
+                User user = new User(nom, prenom, email, pwd);
+                User existingUser = Request.getUserByMail(user);
+
+                if (existingUser != null) {
+                    JOptionPane.showMessageDialog(MainForm.this,
+                            "Un compte avec cette adresse e-mail existe déjà",
+                            "Erreur",
+                            JOptionPane.ERROR_MESSAGE);
+                    return; // Arrêter l'ajout de l'utilisateur
+                }
+
+                User addedUser = Request.addUser(user);
+
+                if (addedUser != null) {
+                    JOptionPane.showMessageDialog(MainForm.this,
+                            "Utilisateur ajouté avec succès",
+                            "Succès",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(MainForm.this,
+                            "Erreur lors de l'ajout de l'utilisateur",
+                            "Erreur",
+                            JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
+
+
         jbtCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,13 +81,14 @@ public class MainForm extends JDialog{
             }
         });
     }
-    public void register(){
+    public void register() {
         String nom = tfNom.getText();
         String prenom = tfPrenom.getText();
         String email = tfEmail.getText();
         String password = String.valueOf(pfPwd.getPassword());
         String verify = String.valueOf(pfVerify.getPassword());
-        //vérification si les champs sont bien remplis
+
+        // Verify if the fields are filled correctly
         if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this,
                     "Veuillez remplir tous les champs du formulaire",
@@ -62,13 +96,16 @@ public class MainForm extends JDialog{
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if(!password.equals(verify)){
+        if (!password.equals(verify)) {
             JOptionPane.showMessageDialog(this,
-                    "Les mots de passe ne correpondent pas",
+                    "Les mots de passe ne correspondent pas",
                     "Essaie encore",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
-        User user = new User(nom,prenom,email,password);
+
+        // Initialize the instance variable "user" with the provided values
+        user = new User(nom, prenom, email, password);
     }
+
 }
