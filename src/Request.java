@@ -108,7 +108,7 @@ public class Request {
                 user.setNom(rs.getString("nom"));
                 user.setPrenom(rs.getString("prenom"));
                 user.setEmail(rs.getString("email"));
-                user.setPwd(rs.getString("pwd"));
+                user.setPwd(rs.getString("mdp"));
 
 
                 userList.add(user);
@@ -119,7 +119,7 @@ public class Request {
 
         return userList;
     }
-    public static User updateUserAttribute(User user, String theName, String newName) {
+    public static User updateUser(User user, String theName, String newName) {
         User updatedUser = null;
         try {
             String sql = "UPDATE users SET " + theName + " = ? WHERE id = ?";
@@ -136,7 +136,7 @@ public class Request {
                     updatedUser.setPrenom(newName);
                 } else if (theName.equals("email")) {
                     updatedUser.setEmail(newName);
-                } else if (theName.equals("pwd")) {
+                } else if (theName.equals("mdp")) {
                     updatedUser.getPwd();
                 }
             }
