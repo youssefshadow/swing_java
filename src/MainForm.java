@@ -4,21 +4,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainForm extends JDialog{
-    private JLabel jiTitre;
+    private JLabel jlTitre;
     private JPanel jpMain;
-    private JLabel jiNom;
+    private JLabel jlNom;
     private JTextField tfNom;
-    private JLabel jiPrenom;
+    private JLabel jlPrenom;
     private JTextField tfPrenom;
     private JTextField tfEmail;
-    private JLabel jiPwd;
+    private JLabel jlPwd;
     private JPasswordField pfPwd;
     private JButton jbtAdd;
     private JButton jbtCancel;
-    private JLabel jiEmail;
+    private JLabel jlEmail;
     private JPasswordField pfVerify;
    
-    private JLabel jiVerify;
+    private JLabel jlVerify;
     private JButton jbtUpdate;
 
     public MainForm(JFrame parent){
